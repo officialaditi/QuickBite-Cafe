@@ -1,6 +1,6 @@
 const foodData = [
   {
-    _id: 1,
+    _id: "1",
     name: "Margherita Pizza",
     image: "/images/pizza1.jpg",
     price: 299,
@@ -11,7 +11,7 @@ const foodData = [
     type: "Veg",
   },
   {
-    _id: 2,
+    _id: "2",
     name: "Paneer Tikka Masala",
     image: "/images/panner.jpg",
     price: 250,
@@ -22,7 +22,7 @@ const foodData = [
     type: "Veg",
   },
   {
-    _id: 3,
+    _id: "3",
     name: "Pepperoni Pizza",
     image: "/images/pizza2.jpg",
     price: 399,
@@ -33,7 +33,7 @@ const foodData = [
     type: "Non-Veg",
   },
   {
-    _id: 4,
+    _id:"4",
     name: "Veg Fried Rice",
     image: "/images/friedRice.jpg",
     price: 190,
@@ -44,7 +44,7 @@ const foodData = [
     type: "Veg",
   },
   {
-    _id: 5,
+    _id: "5",
     name: "Chicken Biryani",
     image: "/images/biryani.jpg",
     price: 320,
@@ -55,7 +55,7 @@ const foodData = [
     type: "Non-Veg",
   },
   {
-    _id: 6,
+    _id: "6",
     name: "Vegan Buddha Bowl",
     image: "/images/salad1.jpg",
     price: 280,
@@ -67,7 +67,7 @@ const foodData = [
   },
 
   {
-    _id: 7,
+    _id: "7",
     name: "Butter Chicken",
     image: "/images/butterChicken.jpg",
     price: 350,
@@ -79,7 +79,7 @@ const foodData = [
   },
 
   {
-    _id: 8,
+    _id: "8",
     name: "Caesar Salad",
     image: "/images/salad2.jpg",
     price: 220,
@@ -91,7 +91,7 @@ const foodData = [
   },
 
   {
-    _id: 9,
+    _id: "9",
     name: "Vegan Sushi Roll",
     image: "/images/veganRoll.jpg",
     price: 300,
@@ -103,7 +103,7 @@ const foodData = [
     type: "Vegan",
   },
   {
-    _id: 10,
+    _id:"10",
     name: "Vegan Chocolate Cake",
     image: "/images/cake2.jpg",
     price: 150,
@@ -114,7 +114,7 @@ const foodData = [
     type: "Vegan",
   },
   {
-    _id: 11,
+    _id: "11",
     name: "Chocolate Brownie",
     image: "/images/cake1.jpg",
     price: 120,
@@ -125,7 +125,7 @@ const foodData = [
     type: "Veg",
   },
   {
-    _id: 12,
+    _id: "12",
     name: "Tuna Sushi Roll",
     image: "/images/tuna.jpg",
     price: 350,

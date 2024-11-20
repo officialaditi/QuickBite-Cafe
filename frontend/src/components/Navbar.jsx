@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { HiOutlineDotsVertical, HiOutlineX, HiOutlineShoppingCart } from "react-icons/hi";
+import {
+  HiOutlineDotsVertical,
+  HiOutlineX,
+  HiOutlineShoppingCart,
+} from "react-icons/hi";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -10,7 +14,8 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-black text-white cursor-pointer w-full fixed z-50">
+    <header className="bg-black text-white cursor-pointer w-full
+    fixed flex-wrap z-50 top-0 left-0 border-b-2">
       <nav className="flex items-center justify-between p-5">
         {/* Desktop Menu */}
         <ul className="hidden lg:flex items-center justify-between gap-6 text-xl uppercase">
@@ -36,12 +41,12 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/menus"
+              to="/menu"
               className={({ isActive }) =>
                 isActive ? "text-yellow-500" : "hover:text-yellow-500"
               }
             >
-              Menus
+              Menu
             </NavLink>
           </li>
         </ul>
@@ -66,7 +71,10 @@ const Navbar = () => {
                 isActive ? "text-yellow-500" : "hover:text-yellow-500"
               }
             >
-              Cart <span className="inline-flex"><HiOutlineShoppingCart /></span>
+              Cart{" "}
+              <span className="inline-flex">
+                <HiOutlineShoppingCart />
+              </span>
             </NavLink>
           </li>
           <li className="bg-yellow-600 px-6 border-2 rounded-xl hover:bg-yellow-500">
@@ -113,13 +121,13 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/menus"
+                to="/menu"
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
                   isActive ? "text-yellow-500" : "hover:text-yellow-500"
                 }
               >
-                Menus
+                Menu
               </NavLink>
             </li>
             <li>
@@ -145,10 +153,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="bg-yellow-600 px-6 border-2 rounded-xl text-center hover:bg-yellow-500">
-              <NavLink
-                to="/login"
-                onClick={() => setMobileMenuOpen(false)}
-              >
+              <NavLink to="/login" onClick={() => setMobileMenuOpen(false)}>
                 Login
               </NavLink>
             </li>

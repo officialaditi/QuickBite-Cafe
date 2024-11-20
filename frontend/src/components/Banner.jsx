@@ -8,7 +8,7 @@ const Banner = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="relative mt-16">
+    <div className="relative">
       {/* Banner Image */}
       <img
         src="./homeImgs/mainBanner.jpg"
