@@ -1,12 +1,20 @@
 import { Link, useParams } from "react-router-dom";
-import foodData from "../FoodData";
 import { FaArrowLeft } from "react-icons/fa";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Rating from "../components/Rating";
 
 const SingleMenu = () => {
+  const [food, setFood] = useState({});
+
   const { id } = useParams();
-  const food = foodData.find((item) => item._id === id);
+  useEffect(() => {
+    const fetchSingleData = async () => {
+      const { data } = await axios.get(`/api/foods/${id}`);
+      setFood(data);
+    };
+    fetchSingleData();
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,16 +42,15 @@ const SingleMenu = () => {
           {/* Description Section */}
           <div className="flex flex-col gap-6 text-center lg:text-left">
             <h1 className="font-mono text-4xl text-white">{food.name}</h1>
-          <div className="flex items-center gap-10" >
-        
-          <Rating
-              value={food.rating}
-              color={{ className: "text-yellow-400" }}
-            />
-            <p className="font-semibold text-lg text-red-400">
-              {food.numReviews} Reviews
-            </p>
-          </div>
+            <div className="flex items-center gap-10">
+              <Rating
+                value={food.rating}
+                color={{ className: "text-yellow-400" }}
+              />
+              <p className="font-semibold text-lg text-red-400">
+                {food.numReviews} Reviews
+              </p>
+            </div>
             <p className="font-bold text-xl text-gray-300">
               {food.description}
             </p>

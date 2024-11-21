@@ -1,4 +1,4 @@
-const foodData = [
+const FoodData = [
   {
     _id: "1",
     name: "Margherita Pizza",
@@ -137,4 +137,4 @@ const foodData = [
   },
 ];
 
-export default foodData;
+export default FoodData;

@@ -1,8 +1,17 @@
-import FoodData from "../FoodData";
 import FoodCard from "../components/FoodCard";
-
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const MenuScreen = () => {
+  const [FoodData, setFoodData] = useState([]);
+
+  useEffect(() => {
+    const fetchFoodData = async () => {
+      const { data } = await axios.get(`/api/foods`);
+      setFoodData(data);
+    };
+    fetchFoodData();
+  });
   return (
     <div className="bg-black min-h-screen text-white">
       {/* Title */}
