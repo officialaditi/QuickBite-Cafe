@@ -1,6 +1,5 @@
 const FoodData = [
   {
-    _id: "1",
     name: "Margherita Pizza",
     image: "/images/pizza1.jpg",
     price: 299,
@@ -11,7 +10,6 @@ const FoodData = [
     type: "Veg",
   },
   {
-    _id: "2",
     name: "Paneer Tikka Masala",
     image: "/images/panner.jpg",
     price: 250,
@@ -22,7 +20,6 @@ const FoodData = [
     type: "Veg",
   },
   {
-    _id: "3",
     name: "Pepperoni Pizza",
     image: "/images/pizza2.jpg",
     price: 399,
@@ -33,7 +30,6 @@ const FoodData = [
     type: "Non-Veg",
   },
   {
-    _id:"4",
     name: "Veg Fried Rice",
     image: "/images/friedRice.jpg",
     price: 190,
@@ -44,7 +40,6 @@ const FoodData = [
     type: "Veg",
   },
   {
-    _id: "5",
     name: "Chicken Biryani",
     image: "/images/biryani.jpg",
     price: 320,
@@ -55,7 +50,6 @@ const FoodData = [
     type: "Non-Veg",
   },
   {
-    _id: "6",
     name: "Vegan Buddha Bowl",
     image: "/images/salad1.jpg",
     price: 280,
@@ -67,7 +61,6 @@ const FoodData = [
   },
 
   {
-    _id: "7",
     name: "Butter Chicken",
     image: "/images/butterChicken.jpg",
     price: 350,
@@ -79,7 +72,6 @@ const FoodData = [
   },
 
   {
-    _id: "8",
     name: "Caesar Salad",
     image: "/images/salad2.jpg",
     price: 220,
@@ -91,7 +83,6 @@ const FoodData = [
   },
 
   {
-    _id: "9",
     name: "Vegan Sushi Roll",
     image: "/images/veganRoll.jpg",
     price: 300,
@@ -103,7 +94,6 @@ const FoodData = [
     type: "Vegan",
   },
   {
-    _id:"10",
     name: "Vegan Chocolate Cake",
     image: "/images/cake2.jpg",
     price: 150,
@@ -114,7 +104,6 @@ const FoodData = [
     type: "Vegan",
   },
   {
-    _id: "11",
     name: "Chocolate Brownie",
     image: "/images/cake1.jpg",
     price: 120,
@@ -125,7 +114,6 @@ const FoodData = [
     type: "Veg",
   },
   {
-    _id: "12",
     name: "Tuna Sushi Roll",
     image: "/images/tuna.jpg",
     price: 350,
