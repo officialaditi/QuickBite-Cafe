@@ -3,6 +3,9 @@ import {
   ALL_MENU_SUCCESS,
   ALL_MENU_FAIL,
   ALL_MENU_FILTER,
+  MENU_DETAILS_REQUEST,
+  MENU_DETAILS_SUCCESS,
+  MENU_DETAILS_FAIL,
 } from "../contants/menuContants";
 import axios from "axios";
 
@@ -42,4 +45,23 @@ export const filterMenuList = (filters) => (dispatch, getState) => {
   }
 
   dispatch({ type: ALL_MENU_FILTER, payload: filterData });
+};
+
+// single menu detail
+export const getMenuDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: MENU_DETAILS_REQUEST });
+
+    const { data } = await axios.get(`/api/foods/${id}`);
+    dispatch({ type: MENU_DETAILS_SUCCESS, payload: data });
+    //
+  } catch (err) {
+    dispatch({
+      type: MENU_DETAILS_FAIL,
+      payload:
+        err.response && err.response.data.message
+          ? err.response.data.message
+          : err.message,
+    });
+  }
 };

@@ -1,5 +1,11 @@
+// all menu list
 export const ALL_MENU_REQUEST = 'ALL_MENU_REQUEST';
 export const ALL_MENU_SUCCESS = 'ALL_MENU_SUCCESS';
 export const ALL_MENU_FAIL = 'ALL_MENU_FAIL';
 export const ALL_MENU_FILTER = 'ALL_MENU_FILTER';
 export const ALL_MENU_FILTER_RESET = 'ALL_MENU_FILTER_RESET';
+
+// menu detail
+export const MENU_DETAILS_REQUEST = 'MENU_DETAILS_REQUEST';
+export const MENU_DETAILS_SUCCESS = 'MENU_DETAILS_SUCCESS';
+export const MENU_DETAILS_FAIL = 'MENU_DETAILS_FAIL';
