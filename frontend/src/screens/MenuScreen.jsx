@@ -1,17 +1,27 @@
 import FoodCard from "../components/FoodCard";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { getMenuList, filterMenuList } from "../redux/actions/menuActions";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../components/Loader";
+import Filter from "../components/Filter";
+
 
 const MenuScreen = () => {
-  const [FoodData, setFoodData] = useState([]);
+  const dispatch = useDispatch();
+
+  const menuList = useSelector((state) => state.menuList);
+  const { loading, error, filterData } = menuList;
 
   useEffect(() => {
-    const fetchFoodData = async () => {
-      const { data } = await axios.get(`/api/foods`);
-      setFoodData(data);
-    };
-    fetchFoodData();
-  });
+    dispatch(getMenuList());
+  }, [dispatch]);
+
+  const handleFilter = (filters) => {
+    dispatch(filterMenuList(filters));
+  };
+
+ 
+
   return (
     <div className="bg-black min-h-screen text-white">
       {/* Title */}
@@ -21,18 +31,20 @@ const MenuScreen = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:p-8 ">
         {/* Filter Section */}
-        <div className="col-span-1 bg-opacity-30 bg-white rounded-lg p-6 shadow-lg backdrop-blur-xl border border-gray-200">
-          <h2 className="text-4xl font-semibold text-center text-red-700 mb-4">
-            Filter
-          </h2>
-        </div>
+        <Filter onFilter={handleFilter} />
 
         {/* Food Cards Section */}
-        <div className="col-span-3 grid sm:grid-cols-2 md:grid-cols-3 gap-6  ">
-          {FoodData.map((items) => (
-            <FoodCard key={items._id} foodItem={items} />
-          ))}
-        </div>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
+          <div className="col-span-3 grid sm:grid-cols-2 md:grid-cols-3 gap-6  ">
+            {filterData.map((items) => (
+              <FoodCard key={items._id} foodItem={items} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
