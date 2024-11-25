@@ -1,13 +1,16 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Rating from "../components/Rating";
 import { getMenuDetails } from "../redux/actions/menuActions";
 import Loader from "../components/Loader";
+import { toast } from "react-toastify";
+
 
 const SingleMenu = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const menuDetails = useSelector((state) => state.menuDetails);
@@ -21,6 +24,11 @@ const SingleMenu = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const addtoCartHandler = () => {
+    navigate(`/cart/${id}`);
+    toast.success("Added to cart")
+  };
+
   return (
     <>
       <div className=" mx-auto p-5 text-white">
@@ -32,7 +40,7 @@ const SingleMenu = () => {
 
         {loading ? (
           <Loader />
-        ) : error ? ( 
+        ) : error ? (
           <p>{error}</p>
         ) : (
           <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-10">
@@ -67,7 +75,11 @@ const SingleMenu = () => {
               <h1 className="font-extrabold text-4xl text-green-500">
                 ₹{food.price}
               </h1>
-              <button className="bg-teal-600 px-8 py-3 rounded-xl text-2xl text-white shadow-md hover:bg-teal-700 transition-colors">
+              <button
+                className="bg-teal-600 px-8 py-3 rounded-xl text-2xl text-white shadow-md hover:bg-teal-700 transition-colors"
+                disabled={food.countInStock === 0}
+                onClick={addtoCartHandler}
+              >
                 Add To Cart
               </button>
             </div>

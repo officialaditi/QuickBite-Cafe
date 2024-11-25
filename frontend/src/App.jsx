@@ -5,6 +5,9 @@ import { HomeScreen } from "./screens/HomeScreen";
 import ContactScreen from "./screens/ContactScreen";
 import MenuScreen from "./screens/MenuScreen";
 import SingleMenu from "./screens/SingleMenu";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CartScreen from "./screens/CartScreen";
 
 const App = () => {
   return (
@@ -16,9 +19,17 @@ const App = () => {
           <Route path="/contact" element={<ContactScreen />} />
           <Route path="/menu" element={<MenuScreen />} />
           <Route path="/product/:id" element={<SingleMenu />} />
+          <Route path="/cart" element={<CartScreen />} />
+          <Route path="/cart/:id" element={<CartScreen />} />
         </Routes>
       </div>
       <Footer />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+      />
     </BrowserRouter>
   );
 };
