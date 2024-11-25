@@ -35,8 +35,8 @@ const CartScreen = () => {
   };
 
   const checkoutHandler = () => {
-    navigate(`/login?redirect=/shipping`)
-  }
+    navigate(`/login?redirect=/shipping`);
+  };
 
   return (
     <>
@@ -117,7 +117,10 @@ const CartScreen = () => {
               {/* Add total price calculation here */}
             </div>
             <div className="mt-5 text-center">
-              <button className="w-2/3 bg-yellow-500 p-2 rounded-full text-lg" onClick={checkoutHandler}>
+              <button
+                className="w-2/3 bg-yellow-500 p-2 rounded-full text-lg"
+                onClick={checkoutHandler}
+              >
                 Proceed to Checkout
               </button>
             </div>
