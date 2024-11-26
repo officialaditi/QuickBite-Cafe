@@ -3,12 +3,14 @@ import express from "express";
 import dotenv from "dotenv";
 import ConnectDB from "./config/db.js";
 import FoodRouter from "./routers/FoodRouter.js";
+import userRouter from './routers/userRouter.js';
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
 ConnectDB();
 
 const app = express();
+app.use(express.json())   // request body parse
 
 app.get("/", (req, res) => {
   res.send("api running");
@@ -16,6 +18,7 @@ app.get("/", (req, res) => {
 
 // Api
 app.use("/api/foods", FoodRouter);
+app.use('/api/users', userRouter);
 
 // error middlewares
 app.use(notFound);
