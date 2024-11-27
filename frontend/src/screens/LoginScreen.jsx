@@ -1,21 +1,19 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { login } from "../redux/actions/userAction";
 import { SlEnvolope } from "react-icons/sl";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { login } from "../redux/actions/userAction";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/";
+  let redirect = searchParams.get("redirect") || "/";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // for local error handling
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
@@ -24,19 +22,11 @@ const LoginScreen = () => {
     if (userInfo) {
       navigate(redirect);
     }
-  }, [navigate, userInfo, redirect]);
+  }, [userInfo, navigate, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    if (!email || !password) {
-      setErrorMessage("Please fill in both email and password.");
-      return;
-    }
-
-    setErrorMessage(""); // Reset error if validation passes
     dispatch(login(email, password));
-    toast.success("Login Successfully...");
   };
 
   return (
@@ -54,10 +44,9 @@ const LoginScreen = () => {
             Welcome Back
           </h1>
           <span className="font-light text-white text-lg mb-6">
-            Sign in with your email and password
+            Loging using your email and password
           </span>
-          {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
-          {error && <p className="text-red-500 mb-4">{error}</p>}
+          {error && <h1>{error}</h1>}
           <div className="w-full max-w-md">
             <form onSubmit={submitHandler}>
               {/* Email Field */}
@@ -111,13 +100,16 @@ const LoginScreen = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className={`w-full bg-teal-500 text-white font-semibold py-2 rounded mt-4 ${
-                  loading ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-                disabled={loading}
+                className={`w-full bg-teal-500 text-white font-semibold py-2 rounded mt-4 `}
               >
-                {loading ? "Loading..." : "Login"}
+                {loading ? "loading..." : "Login"}
               </button>
+              <Link to='/register' >
+                <h1 className="text-white mt-5 text-center">
+                  Don&apos;t have account yet ?{" "}
+                  <strong className="underline" >Register for Free</strong>
+                </h1>
+              </Link>
             </form>
           </div>
         </div>

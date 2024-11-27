@@ -30,6 +30,8 @@ const App = () => {
       <ToastContainer
         position="top-right"
         autoClose={1000}
+        pauseOnFocusLoss='false'
+        pauseOnHover='false'
         hideProgressBar={false}
       />
     </BrowserRouter>

@@ -1,12 +1,12 @@
-import axios from "axios";
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGOUT,
 } from "../constants/userConstants";
+import axios from "axios";
 
-// login action
+// LOGIN function
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
@@ -16,16 +16,14 @@ export const login = (email, password) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-
     const { data } = await axios.post(
       `/api/users/login`,
       { email, password },
       config
     );
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-    console.log(data);
 
-    // storing the data = local-storage
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+    // storing data into local-storage
     localStorage.setItem("userInfo", JSON.stringify(data));
     //
   } catch (err) {
@@ -39,7 +37,7 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-// logout function
+// LOGOUT function
 export const logout = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
