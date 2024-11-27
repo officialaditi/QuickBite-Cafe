@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { login } from "../redux/actions/userAction";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import {toast} from 'react-toastify';
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
+      toast.success('Login successfully')
       navigate(redirect);
     }
   }, [userInfo, navigate, redirect]);
@@ -27,6 +29,7 @@ const LoginScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+    
   };
 
   return (
@@ -46,7 +49,7 @@ const LoginScreen = () => {
           <span className="font-light text-white text-lg mb-6">
             Loging using your email and password
           </span>
-          {error && <h1>{error}</h1>}
+          {error && <h1 className="text-3xl text-red-700 m-3">{error}</h1>}
           <div className="w-full max-w-md">
             <form onSubmit={submitHandler}>
               {/* Email Field */}

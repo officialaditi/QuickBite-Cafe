@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/cart" element={<CartScreen />} />
           <Route path="/cart/:id" element={<CartScreen />} />
           <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
         </Routes>
       </div>
       <Footer />
@@ -30,8 +32,8 @@ const App = () => {
       <ToastContainer
         position="top-right"
         autoClose={1000}
-        pauseOnFocusLoss='false'
-        pauseOnHover='false'
+        pauseOnFocusLoss="false"
+        pauseOnHover="false"
         hideProgressBar={false}
       />
     </BrowserRouter>

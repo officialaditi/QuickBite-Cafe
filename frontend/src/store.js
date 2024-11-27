@@ -6,13 +6,14 @@ import {
   menuListReducer,
 } from "./redux/reducers/menuReducers";
 import { cartReducer } from "./redux/reducers/cartReducers";
-import { userLoginReducer } from "./redux/reducers/userReducers";
+import { userLoginReducer, userRegisterReducer } from "./redux/reducers/userReducers";
 
 const reducer = combineReducers({
   menuList: menuListReducer,
   menuDetails: menuDetailsReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")

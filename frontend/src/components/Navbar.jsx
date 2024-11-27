@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   HiOutlineDotsVertical,
   HiOutlineX,
@@ -26,6 +26,10 @@ const Navbar = () => {
   const toggleDropdown = () => {
     setDropdownOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    setDropdownOpen(false);
+  }, []);
 
   const logoutHandler = () => {
     dispatch(logout()); // Dispatch the logout action first

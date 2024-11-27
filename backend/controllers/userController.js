@@ -52,18 +52,15 @@ const register = asyncHandler(async (req, res) => {
     email,
     password,
     phoneNumber,
-    
   });
 
   if (user) {
     return res.status(201).json({
-      message: "Welcome to Quick Bite",
-      user: {
-        _id: user._id,
-        fullname: user.fullname,
-        email: user.email,
-        token: generateToken(user._id),
-      },
+      _id: user._id,
+      fullname: user.fullname,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      token: generateToken(user._id),
     });
   } else {
     return res.status(500).json({ message: "something went wrong " });
@@ -76,18 +73,18 @@ const register = asyncHandler(async (req, res) => {
  *  @access  private
  */
 
-const getUserProfile = asyncHandler(async(req, res) => {
+const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
-  if(user){
+  if (user) {
     res.json({
       _id: user._id,
       fullname: user.fullname,
       email: user.email,
-      isAdmin: user.isAdmin
-    })
-  } else{
+      isAdmin: user.isAdmin,
+    });
+  } else {
     res.status(404);
-    throw new Error('User is not found');
+    throw new Error("User is not found");
   }
-})
+});
 export { login, register, getUserProfile };
