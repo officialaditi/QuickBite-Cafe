@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ALL_MENU_FILTER_RESET } from "../redux/contants/menuContants";
+import { ALL_MENU_FILTER_RESET } from "../redux/constants/menuConstants";
 import { useDispatch } from "react-redux";
 
 const Filter = ({ onFilter }) => {

@@ -8,6 +8,7 @@ import SingleMenu from "./screens/SingleMenu";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CartScreen from "./screens/CartScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/product/:id" element={<SingleMenu />} />
           <Route path="/cart" element={<CartScreen />} />
           <Route path="/cart/:id" element={<CartScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
         </Routes>
       </div>
       <Footer />

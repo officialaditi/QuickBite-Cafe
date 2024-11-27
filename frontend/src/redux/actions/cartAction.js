@@ -3,7 +3,7 @@ import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
   CART_UPDATE_QTY,
-} from "../contants/cartContants";
+} from "../constants/cartConstants";
 
 // add to cart function
 export const addToCart =

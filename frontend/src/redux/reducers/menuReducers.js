@@ -7,7 +7,7 @@ import {
   MENU_DETAILS_REQUEST,
   MENU_DETAILS_SUCCESS,
   MENU_DETAILS_FAIL,
-} from "../contants/menuContants";
+} from "../constants/menuConstants";
 
 // menuList reducer = all menu list and filter
 export const menuListReducer = (

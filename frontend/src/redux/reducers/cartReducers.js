@@ -2,7 +2,7 @@ import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
   CART_UPDATE_QTY,
-} from "../contants/cartContants";
+} from "../constants/cartConstants";
 
 // Add to cart reducer
 export const cartReducer = (state = { cartItems: [] }, action) => {

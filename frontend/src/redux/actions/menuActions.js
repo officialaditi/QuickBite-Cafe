@@ -6,7 +6,7 @@ import {
   MENU_DETAILS_REQUEST,
   MENU_DETAILS_SUCCESS,
   MENU_DETAILS_FAIL,
-} from "../contants/menuContants";
+} from "../constants/menuConstants";
 import axios from "axios";
 
 // Action to get all menu data
