@@ -4,7 +4,7 @@ import {
   removeFromCart,
   updateQty,
 } from "../redux/actions/cartAction";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { FcEmptyTrash } from "react-icons/fc";
 import { toast } from "react-toastify";
@@ -16,6 +16,9 @@ const CartScreen = () => {
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   useEffect(() => {
     if (id) {
@@ -35,8 +38,15 @@ const CartScreen = () => {
   };
 
   const checkoutHandler = () => {
-    navigate(`/login?redirect=/shipping`);
+    if (!userInfo) {
+      toast.success("Login successfully"); // Only show login toast when the user logs in
+      navigate(`/login?redirect=/shipping`);
+    } else {
+      navigate("/shipping");
+    }
   };
+
+  const totalPrice = useMemo(() =>  cartItems.reduce((acc, item) => acc+item.qty * item.price,0), [cartItems])
 
   return (
     <>
@@ -109,10 +119,7 @@ const CartScreen = () => {
               <span>Total Price:</span>
               <span>
                 ₹
-                {cartItems.reduce(
-                  (acc, CurrVal) => acc + CurrVal.qty * CurrVal.price,
-                  0
-                )}
+                {totalPrice}
               </span>{" "}
               {/* Add total price calculation here */}
             </div>

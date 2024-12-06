@@ -56,12 +56,12 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/contact"
+              to="/reservation"
               className={({ isActive }) =>
                 isActive ? "text-yellow-500" : "hover:text-yellow-500"
               }
             >
-              Contact
+              Book Table
             </NavLink>
           </li>
           <li>
@@ -164,13 +164,13 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/contact"
+                to="/reservation"
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
                   isActive ? "text-yellow-500" : "hover:text-yellow-500"
                 }
               >
-                Contact
+              Book Table
               </NavLink>
             </li>
             <li>

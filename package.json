@@ -22,7 +22,8 @@
     "express-async-handler": "^1.2.0",
     "google-auth-library": "^9.15.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.8.2"
+    "mongoose": "^8.8.2",
+    "nodemailer": "^6.9.16"
   },
   "devDependencies": {
     "concurrently": "^9.1.0",

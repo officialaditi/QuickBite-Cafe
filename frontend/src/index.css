@@ -5,3 +5,10 @@
 body {
   overflow-x: hidden;
 }
+
+/* Add this to your CSS file if needed */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Inverts the icon colors for light-on-dark themes */
+  cursor: pointer;
+}

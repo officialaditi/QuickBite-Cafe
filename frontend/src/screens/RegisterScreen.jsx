@@ -34,7 +34,7 @@ const RegisterScreen = () => {
  
 
   const submitHandler = (e) => {
-    e.preventDefault(); // Fixed typo
+    e.preventDefault(); 
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
     } else {

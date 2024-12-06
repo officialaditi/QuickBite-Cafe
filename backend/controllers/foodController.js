@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import MenuItem from "../modals/menuItemModel.js";
+import MenuItem from "../models/menuItemModel.js";
 
 /**
  * @Desc    get all foodItems (food menu);

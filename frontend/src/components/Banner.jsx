@@ -1,11 +1,26 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Banner = () => {
+  const navigate = useNavigate();  // To navigate programmatically
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
   const closeModal = () => setIsModalOpen(false);
+
+  const handleOrderOnline = () => {
+    if (userInfo) {
+      navigate("/menu");  // If the user is logged in, navigate to the menu page
+    } else {
+      openModal();  // Open the modal if the user is not logged in
+    }
+  };
 
   return (
     <div className="relative">
@@ -31,12 +46,15 @@ const Banner = () => {
               Book Your Table
             </button>
           </NavLink>
+
           {/* Order Online Button */}
           <button
-            onClick={openModal}
-            className="bg-red-600 hover:bg-red-700 text-xl md:text-lg px-6 py-3 md:py-2 rounded-lg shadow-lg"
+            onClick={handleOrderOnline}
+            className={`${
+              userInfo ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"
+            } text-xl md:text-lg px-6 py-3 md:py-2 rounded-lg shadow-lg`}
           >
-            Order Online
+            {userInfo ? "Order Online" : "Login to Order"}
           </button>
         </div>
       </div>
@@ -50,11 +68,13 @@ const Banner = () => {
               Please log in to your account to proceed with your order.
             </p>
             <div className="space-y-4">
-              <NavLink to="/login">
-                <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition">
-                  Login
-                </button>
-              </NavLink>
+              {!userInfo && (
+                <NavLink to="/login">
+                  <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition">
+                    Login
+                  </button>
+                </NavLink>
+              )}
               <button
                 onClick={closeModal}
                 className="w-full bg-gray-300 hover:bg-gray-400 text-black py-2 px-4 rounded-lg transition"

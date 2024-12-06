@@ -35,13 +35,24 @@ export const filterMenuList = (filters) => (dispatch, getState) => {
 
   let filterData = [...FoodData];
 
+  // filter by category
   if (filters.category) {
     filterData = filterData.filter(
       (item) => item.category === filters.category
     );
   }
+  // filter by type
   if (filters.type) {
     filterData = filterData.filter((item) => item.type === filters.type);
+  }
+  // Filter by search term if provided
+  if (filters.searchTerm) {
+    filterData = filterData.filter(
+      (item) =>
+        item.name.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
+        item.type.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
+        item.category.toLowerCase().includes(filters.searchTerm.toLowerCase())
+    );
   }
 
   dispatch({ type: ALL_MENU_FILTER, payload: filterData });
